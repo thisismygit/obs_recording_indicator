@@ -1,0 +1,6 @@
+#ifndef OBS_RECORDING_INDICATOR_H
+#define OBS_RECORDING_INDICATOR_H 1
+
+#include "ruby.h"
+
+#endif /* OBS_RECORDING_INDICATOR_H */

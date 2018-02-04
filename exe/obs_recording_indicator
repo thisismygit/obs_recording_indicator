@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "obs_recording_indicator"
+
+puts "Trying soon"
+ObsRecordingIndicator.monitor
