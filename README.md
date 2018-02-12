@@ -1,8 +1,6 @@
 # ObsRecordingIndicator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/obs_recording_indicator`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Gem will open your OBS logs folder, figure out the current log file, and then parse it to determine when you start and stop recording.  With this gem you can add a few lines of code to signal other systems (an LCD display?) to tell you whether you're recording or not.  
 
 ## Installation
 
@@ -22,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$  obs_recording_indicator
+READING...
+IT STARTED
+```
 
 ## Development
 

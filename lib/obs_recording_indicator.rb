@@ -1,28 +1,32 @@
 require "obs_recording_indicator/version"
 
+require 'net/http'
 require 'pry'
 require 'file-tail'
 
 module ObsRecordingIndicator
 
   def self.get_current_obs_log_file
-    log_path = 'C:\\Users\\john\\AppData\\Roaming\\obs-studio\\logs\\'
-    file_name = '2018-02-04 15-37-46.txt'
-    "#{log_path}#{file_name}"
+    log_path_finder = "C:/Users/john/AppData/Roaming/obs-studio/logs/*.txt"
+    # file_name = '2018-02-04 15-37-46.txt'
+    current_log_file = Dir.glob(log_path_finder).sort.last
   end
 
   def self.signal_start
+    Net::HTTP.get(@alert_host, "/lcd?m0=RECORDING&b=10")
     puts "IT STARTED"
   end
 
   def self.signal_stop
+    Net::HTTP.get(@alert_host, "/lcd?m0=OFF&b=100")
     puts "IT STOPPED"
   end
 
   def self.monitor
+    @alert_host = "192.168.1.200"
     file_path = ObsRecordingIndicator.get_current_obs_log_file
 
-    puts "READING..."
+    puts "READING #{file_path.inspect}..."
 
     File.open(file_path) do |log|
       log.extend(File::Tail)
